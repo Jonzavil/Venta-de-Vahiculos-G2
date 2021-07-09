@@ -17,5 +17,6 @@ public class Usuario {
     public Usuario(ArrayList<Vendedor> v, ArrayList<Comprador> c) {
         this.v = v;
         this.c = c;
+        System.out.println("hola mundo");
     }
 }
