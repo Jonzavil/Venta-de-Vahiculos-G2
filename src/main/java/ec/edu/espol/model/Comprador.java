@@ -5,6 +5,10 @@
  */
 package ec.edu.espol.model;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
+
 /**
  *
  * @author ZavalaAvila
@@ -72,5 +76,24 @@ public class Comprador {
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+    @Override
+    public boolean equals(Object o){
+        if(this==null)
+            return false;
+        if (this== o)
+            return true;
+        if (this.getClass()!=o.getClass())
+            return false;
+        Comprador other=(Comprador)o;
+        return this.correoElectronico.equals(other.correoElectronico);
+    }
+    public void saveFile(){
+        try(PrintWriter pw=new PrintWriter(new FileOutputStream(new File("Comprador.txt"))))
+        {
+            pw.println(this.id+"|"+this.nombre+"|"+this.apellidos+"|"+this.organizacion+"|"+this.correoElectronico+"|"+this.clave);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }
