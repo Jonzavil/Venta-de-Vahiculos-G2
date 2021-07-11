@@ -5,6 +5,9 @@
  */
 package ec.edu.espol.model;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,11 +17,9 @@ import java.util.Scanner;
  */
 public class Oferta {
     private String correo;
-    private Vehiculo vehiculos;
     private double precioOfertar;
 
-    public Oferta(Vehiculo vehiculos, double precioOfertar, String correo) {
-        this.vehiculos = vehiculos;
+    public Oferta(double precioOfertar, String correo) {
         this.precioOfertar = precioOfertar;
         this.correo=correo;
     }
@@ -31,15 +32,6 @@ public class Oferta {
         this.correo = correo;
     }
     
-
-    public Vehiculo getVehiculos() {
-        return vehiculos;
-    }
-
-    public void setVehiculos(Vehiculo vehiculos) {
-        this.vehiculos = vehiculos;
-    }
-
     public double getPrecioOfertar() {
         return precioOfertar;
     }
@@ -47,9 +39,31 @@ public class Oferta {
     public void setPrecioOfertar(double precioOfertar) {
         this.precioOfertar = precioOfertar;
     }
-    @Override
-    public String toString(){
-        return this.vehiculos.toString();
+    public void saveFile(String nomfile){
+         try(PrintWriter pw = new PrintWriter(new FileOutputStream(new File(nomfile),true)))
+        {
+            pw.println(this.correo+"|"+this.precioOfertar);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    public static ArrayList<Oferta> readFile(String nomFile){
+        ArrayList<Oferta> ofertas = new ArrayList<>();
+        try(Scanner sc = new Scanner(new File(nomFile))){
+            while(sc.hasNextLine())
+            {
+                String linea = sc.nextLine();
+                String[] tokens = linea.split("\\|");
+                Oferta o;
+                o = new Oferta(Integer.parseInt(tokens[1]),tokens[0]);
+                ofertas.add(o);
+            }
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return ofertas;
     }
     public static ArrayList<Oferta> ofertarPorVehiculo(String nomfileVehiculo,String nomfileComprador){
         Scanner sc=new Scanner(System.in);
@@ -84,7 +98,7 @@ public class Oferta {
                     if(opcion==2){
                         System.out.println("Precio a ofertar: ");
                         double pO=sc.nextDouble();
-                        ofer=new Oferta(aV[cont],pO,correo);
+                        ofer=new Oferta(pO,correo);
                         cP.add(ofer);
                         System.out.println("Oferta Realizada");
                     }
@@ -104,7 +118,7 @@ public class Oferta {
                     if(opcion==2){
                         System.out.println("Precio a ofertar: ");
                         double pO=sc.nextDouble();
-                        ofer=new Oferta(aV[cont],pO,correo);
+                        ofer=new Oferta(pO,correo);
                         cP.add(ofer);
                         System.out.println("Oferta Realizada");
                     }
