@@ -19,24 +19,26 @@ public class Main {
         Scanner sc=new Scanner(System.in);
         sc.useDelimiter("\n");
         int a=0;
-        double opcion;
+        int opcion;
         do{
             System.out.println("1.Vendedor");
             System.out.println("2.Comprador");
             System.out.println("3.Salir");
             System.out.println("Ingrese valor de la opcion: ");
-            opcion=sc.nextDouble();
-            if(opcion==1){
-                System.out.println("1");
-            }
-            else if (opcion==2){
-                System.out.println("2");
-            }
-            else if(opcion==3){
-                a=3;
-            }
-            else{
-                System.out.println("Valor Invalido");       
+            opcion=sc.nextInt();
+            switch ( opcion) {
+                case 1:
+                    System.out.println("1");
+                    break;
+                case 2:
+                    System.out.println("2");
+                    break;
+                case 3:
+                    a=3;
+                    break;
+                default:       
+                    System.out.println("Valor Invalido");
+                    break;
             }
         }while(a!=3);
     }
