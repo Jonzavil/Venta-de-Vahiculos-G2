@@ -120,7 +120,7 @@ public class Vendedor {
             while(sc.hasNextLine())
             {
                 String linea = sc.nextLine();
-                String[] tokens = linea.split("|");
+                String[] tokens = linea.split("\\|");
                 Vendedor v = new Vendedor(Integer.parseInt(tokens[0]),tokens[1],tokens[2],tokens[3],tokens[4],tokens[5]);
                 vendedores.add(v);
             }
@@ -153,11 +153,12 @@ public class Vendedor {
          System.out.println("Ingrese su clave: ");
          String clave = sc.next();
          if (correo.equals(Vendedor.searchByCorreo(vendedores, correo).correoElectronico)){
-             Vendedor v1 = new Vendedor(id, nombres,apellidos,organizacion,correo,clave);   
-             return v1;
+             return null;
          }
          else{
-             return null;
+             Vendedor v1 = new Vendedor(id, nombres,apellidos,organizacion,correo,clave);   
+             v1.saveFile(nomfile);
+             return v1;
          }
      }
 }

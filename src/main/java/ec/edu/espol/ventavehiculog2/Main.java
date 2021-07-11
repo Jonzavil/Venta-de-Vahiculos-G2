@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ec.edu.espol.ventavehiculog2;
+import ec.edu.espol.model.Vendedor;
 import java.util.Scanner;
 /**
  *
@@ -35,6 +36,7 @@ public class Main {
                     opcion=sc.nextInt();
                     switch(opcion){
                         case 1:
+                            Vendedor.registroVendedor(sc, "Vendedor.txt");
                             break;
                         case 2:
                             break;
