@@ -1,3 +1,2 @@
-1|Jonathan|Zavala|ESPOL|jonzavil@espol.edu.ec|71dd95e37b85e94c4ecab1e9d0c8f97f2030dec6abca853119b88ea9028519b2
-2|jony|zav|UC|jz@gmail.com|a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3
-3|j|z|a@h.com|12|6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918
+1|Jonathan|Zavala|ESPOL|jz|6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918
+2|a|s|12|12|6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918

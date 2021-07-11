@@ -47,7 +47,6 @@ public class Main {
                     switch(opcion1){
                         case 1:
                             Vendedor.registroVendedor(sc, "Vendedor.txt");
-                            System.out.println("Registro Completado");
                             System.out.println("---------------------------------------------");
                             break;
                         case 2:

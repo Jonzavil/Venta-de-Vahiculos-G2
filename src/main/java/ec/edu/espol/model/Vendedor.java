@@ -41,13 +41,13 @@ public class Vendedor extends Personas {
     }
     
     public static String searchByCorreo(ArrayList<Vendedor> vendedores,String correo){
+        String vn = null;
         for(Vendedor v : vendedores){
-            if(v.correoElectronico.equals(correo));
-            return v.correoElectronico;
+            if(v.correoElectronico.equals(correo))
+              vn= v.correoElectronico;
         }
-        return null;
-    }
-    
+        return vn;
+    }    
      public static Vendedor registroVendedor(Scanner sc, String nomfile){
          ArrayList<Vendedor> vendedores = Vendedor.readFile(nomfile);
          int id = Util.nextID(nomfile);
@@ -62,32 +62,36 @@ public class Vendedor extends Personas {
          System.out.println("Ingrese su clave: ");
          String clave = sc.next();
          if (correo.equals(Vendedor.searchByCorreo(vendedores, correo))){
+             System.out.println("Registro Fallido correo ya existente");
              return null;
          }
          else{
              Vendedor v1 = new Vendedor(id, nombres,apellidos,organizacion,correo,clave);   
              v1.saveFile(nomfile);
+             System.out.println("Registro Completado");
              return v1;
          }
      }
      
     public static boolean compararCorreoYContraseña(String nomfile,String correo,String contraseña){
         ArrayList<Vendedor> vendedores = Vendedor.readFile(nomfile);
+        String c=null;
         try 
         {
-            contraseña = toHexString(getSHA(contraseña));   
+            contraseña = toHexString(getSHA(contraseña));
+            contraseña = toHexString(getSHA(contraseña));
         }
         // For specifying wrong message digest algorithms 
         catch (NoSuchAlgorithmException e) { 
             System.out.println("Exception thrown for incorrect algorithm: " + e); 
         }
-        System.out.println(contraseña);
-        for(Vendedor v : vendedores){
-            if(v.correoElectronico.equals(correo)&&(v.clave.equals(contraseña))){
-                return true;
-            }
-            System.out.println(v.correoElectronico+v.clave);
-        }
-        return false;
+            for(Vendedor v: vendedores){
+                if(v.correoElectronico.equals(correo)){
+                    c=v.clave;
+                }
+            } 
+            System.out.println(c);
+            System.out.println(contraseña);
+        return contraseña.equals(c);
     }
 }

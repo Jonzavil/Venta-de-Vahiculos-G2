@@ -210,7 +210,7 @@ public class Vehiculo {
     public void saveFile(String nomfile){
          try(PrintWriter pw = new PrintWriter(new FileOutputStream(new File(nomfile),true)))
         {
-            pw.println(this.id+"|"+this.placa+"|"+this.marca+"|"+this.modelo+"|"+this.tipoMotor+"|"+this.año+"|"+this.recorrido+"|"+this.tipoCombustible+"|"+this.precio+"|"+this.vidrios+"|"+this.transmision+this.traccion);
+            pw.println(this.id+"|"+this.placa+"|"+this.marca+"|"+this.modelo+"|"+this.tipoMotor+"|"+this.año+"|"+this.recorrido+"|"+this.tipoCombustible+"|"+this.precio+"|"+this.vidrios+"|"+this.transmision+"|"+this.traccion);
         }
         catch(Exception e){
             System.out.println(e.getMessage());
@@ -280,6 +280,7 @@ public class Vehiculo {
                  double precio = sc.nextDouble();
                  if(!placa.equals(Vehiculo.searchByPlaca(vehiculos, placa))){
                     v1 = new Vehiculo(id,placa,marca,modelo,tipomotor,año,recorrido,color,combustible,precio);
+                    v1.saveFile(nomfile);
                     return v1;
                  }else
                      return null;
@@ -311,6 +312,7 @@ public class Vehiculo {
                  double precio = sc.nextDouble();
                  if(!placa.equals(Vehiculo.searchByPlaca(vehiculos, placa))){
                     v1 = new Vehiculo(id,placa,marca,modelo,tipomotor,año,recorrido,color,combustible,precio,vidrios,transmision,traccion);
+                    v1.saveFile(nomfile);
                     return v1;
                  }else
                      return null;
@@ -340,12 +342,14 @@ public class Vehiculo {
                  double precio = sc.nextDouble();
                  if(!placa.equals(Vehiculo.searchByPlaca(vehiculos, placa))){
                     v1 = new Vehiculo(id,placa,marca,modelo,tipomotor,año,recorrido,color,combustible,precio,vidrios,transmision);
+                    v1.saveFile(nomfile);
                     return v1;
                  }else
                      return null;
              }
          
-         }
+         }else
+             System.out.println("Correo o Contraseña Incorrecta");
          return null;
      }
      
