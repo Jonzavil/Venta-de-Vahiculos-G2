@@ -6,16 +6,9 @@
 package ec.edu.espol.model;
 
 import ec.edu.espol.util.Util;
-import static ec.edu.espol.util.Util.getSHA;
-import static ec.edu.espol.util.Util.toHexString;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
-
 /**
  *
  * @author ZavalaAvila
@@ -43,11 +36,12 @@ public class Comprador extends Personas {
     }
     
     public static String searchByCorreo(ArrayList<Comprador> compradores,String correo){
+        String cn=null;
         for(Comprador c : compradores){
             if(c.correoElectronico.equals(correo));
-            return c.correoElectronico;
+            cn= c.correoElectronico;
         }
-        return null;
+        return cn;
     }
     
      public static Comprador registroComprador(Scanner sc, String nomfile){

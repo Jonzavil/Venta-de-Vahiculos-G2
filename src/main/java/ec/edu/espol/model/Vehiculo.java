@@ -198,6 +198,12 @@ public class Vehiculo {
         Vehiculo other = (Vehiculo) obj;
         return Objects.equals(this.placa, other.placa);
     }    
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.placa);
+        return hash;
+    }
     public void saveFile(String nomfile){
          try(PrintWriter pw = new PrintWriter(new FileOutputStream(new File(nomfile),true)))
         {
@@ -225,11 +231,12 @@ public class Vehiculo {
         return vehiculos;
     }
     public static String searchByPlaca(ArrayList<Vehiculo> vehiculos,String placa){
+        String vn=null;
         for(Vehiculo v : vehiculos){
             if(v.placa.equals(placa));
-            return v.placa;
+            vn= v.placa;
         }
-        return null;
+        return vn;
     }
      public static Vehiculo registroVehiculo(Scanner sc, String nomfile,String nomfilevendedor){
          ArrayList<Vehiculo> vehiculos = Vehiculo.readFile(nomfile);

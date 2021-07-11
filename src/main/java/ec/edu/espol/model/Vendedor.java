@@ -6,8 +6,6 @@
 package ec.edu.espol.model;
 
 import ec.edu.espol.util.Util;
-import static ec.edu.espol.util.Util.getSHA;
-import static ec.edu.espol.util.Util.toHexString;
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -78,8 +76,8 @@ public class Vendedor extends Personas {
         String c=null;
         try 
         {
-            contraseña = toHexString(getSHA(contraseña));
-            contraseña = toHexString(getSHA(contraseña));
+            contraseña = Util.toHexString(Util.getSHA(contraseña));
+            contraseña = Util.toHexString(Util.getSHA(contraseña));
         }
         // For specifying wrong message digest algorithms 
         catch (NoSuchAlgorithmException e) { 

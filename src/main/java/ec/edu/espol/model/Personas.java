@@ -6,16 +6,11 @@
 package ec.edu.espol.model;
 
 import ec.edu.espol.util.Util;
-import static ec.edu.espol.util.Util.getSHA;
-import static ec.edu.espol.util.Util.toHexString;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Scanner;
-
 /**
  *
  * @author yober
@@ -36,7 +31,7 @@ public class Personas {
         this.correoElectronico = correoElectronico;
         try 
         {
-            this.clave = toHexString(getSHA(clave));   
+            this.clave = Util.toHexString(Util.getSHA(clave));   
         }
         // For specifying wrong message digest algorithms 
         catch (NoSuchAlgorithmException e) { 
@@ -79,7 +74,7 @@ public class Personas {
     public void setClave(String clave) {
         try 
         {
-            this.clave = toHexString(getSHA(clave));   
+            this.clave = Util.toHexString(Util.getSHA(clave));   
         }
         // For specifying wrong message digest algorithms 
         catch (NoSuchAlgorithmException e) { 
