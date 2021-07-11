@@ -26,12 +26,40 @@ public class Main {
             System.out.println("3.Salir");
             System.out.println("Ingrese valor de la opcion: ");
             opcion=sc.nextInt();
-            switch ( opcion) {
+            switch (opcion) {
                 case 1:
-                    System.out.println("1");
+                    System.out.println("1. Registrar un nuevo vendedor");
+                    System.out.println("2.Ingresar un nuevo vehiculo");
+                    System.out.println("3.Aceptar oferta");
+                    System.out.println("Ingrese valor de la opcion: ");
+                    opcion=sc.nextInt();
+                    switch(opcion){
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        default:       
+                            System.out.println("Valor Invalido");
+                            break;
+                    }
                     break;
                 case 2:
                     System.out.println("2");
+                    System.out.println("1.Registrar un nuevo comprador");
+                    System.out.println("2.Ofertar por un vehiculo");
+                    System.out.println("Ingrese valor de la opcion: ");
+                    opcion=sc.nextInt();
+                    switch(opcion){
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        default:       
+                            System.out.println("Valor Invalido");
+                            break;
+                    }
                     break;
                 case 3:
                     a=3;
