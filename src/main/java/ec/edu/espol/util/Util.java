@@ -16,6 +16,10 @@ import java.security.NoSuchAlgorithmException;
  * @author eduardo
  */
 public class Util {
+
+    public static int nextID(File nomfile) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     // el constructor se lo ha declarado privado
     // ya que esta clase solo va a contener comportamientos estáticos
     // por lo tanto, no se van a permitir crear instancia de la clase Util

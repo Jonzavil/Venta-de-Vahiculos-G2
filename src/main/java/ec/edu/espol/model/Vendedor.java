@@ -5,6 +5,7 @@
  */
 package ec.edu.espol.model;
 
+import ec.edu.espol.util.Util;
 import static ec.edu.espol.util.Util.getSHA;
 import static ec.edu.espol.util.Util.toHexString;
 import java.io.File;
@@ -26,6 +27,7 @@ public class Vendedor {
     private String organizacion;
     private String correoElectronico;
     private String clave; 
+    
     public Vendedor(int id, String nombre, String apellidos, String organizacion, String correoElectronico, String clave) {
         this.id = id;
         this.nombre = nombre;
@@ -102,4 +104,60 @@ public class Vendedor {
         hash = 29 * hash + Objects.hashCode(this.correoElectronico);
         return hash;
     }
+    public void saveFile(String nomfile){
+         try(PrintWriter pw = new PrintWriter(new FileOutputStream(new File(nomfile),true)))
+        {
+            pw.println(this.id+"|"+this.nombre+"|"+this.apellidos+"|"+this.organizacion+"|"+this.correoElectronico+"|"+this.clave);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public static ArrayList<Vendedor> readFile(String nomFile){
+        ArrayList<Vendedor> vendedores = new ArrayList<>();
+        try(Scanner sc = new Scanner(new File(nomFile))){
+            while(sc.hasNextLine())
+            {
+                String linea = sc.nextLine();
+                String[] tokens = linea.split("|");
+                Vendedor v = new Vendedor(Integer.parseInt(tokens[0]),tokens[1],tokens[2],tokens[3],tokens[4],tokens[5]);
+                vendedores.add(v);
+            }
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return vendedores;
+    }
+    
+    public static Vendedor searchByCorreo(ArrayList<Vendedor> vendedores,String correo){
+        for(Vendedor v : vendedores){
+            if(v.correoElectronico.equals(correo));
+            return v;
+        }
+        return null;
+    }
+    
+     public static Vendedor registroVendedor(Scanner sc, String nomfile){
+         ArrayList<Vendedor> vendedores = Vendedor.readFile(nomfile);
+         int id = Util.nextID(nomfile);
+         System.out.println("Ingrese sus nombres: ");
+         String nombres = sc.next();
+         System.out.println("Ingrese sus apellidos: ");
+         String apellidos = sc.next();
+         System.out.println("Ingrese la organización  la que pertenece: ");
+         String organizacion = sc.next();
+         System.out.println("Ingrese el correo electrónico");
+         String correo = sc.next();
+         System.out.println("Ingrese su clave: ");
+         String clave = sc.next();
+         if (correo.equals(Vendedor.searchByCorreo(vendedores, correo).correoElectronico)){
+             Vendedor v1 = new Vendedor(id, nombres,apellidos,organizacion,correo,clave);   
+             return v1;
+         }
+         else{
+             return null;
+         }
+     }
 }
