@@ -88,8 +88,7 @@ public class Vendedor extends Personas {
                     c=v.clave;
                 }
             } 
-            System.out.println(c);
-            System.out.println(contraseña);
         return contraseña.equals(c);
     }
+    
 }

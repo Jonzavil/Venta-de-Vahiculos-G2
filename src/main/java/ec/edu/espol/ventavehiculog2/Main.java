@@ -5,6 +5,7 @@
  */
 package ec.edu.espol.ventavehiculog2;
 import ec.edu.espol.model.Comprador;
+import ec.edu.espol.model.Oferta;
 import ec.edu.espol.model.Vehiculo;
 import ec.edu.espol.model.Vendedor;
 import java.util.Scanner;
@@ -77,10 +78,10 @@ public class Main {
                     switch(opcion2){
                         case 1:
                             Comprador.registroComprador(sc, "Comprador.txt");
-                            System.out.println("Registro Completado");
                             System.out.println("---------------------------------------------");
                             break;
                         case 2:
+                            Oferta.ofertarPorVehiculo("Vehiculo.txt", "Comprador.txt");
                             System.out.println("---------------------------------------------");
                             break;
                         case 3:

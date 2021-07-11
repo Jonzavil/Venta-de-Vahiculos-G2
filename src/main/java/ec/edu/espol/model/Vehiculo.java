@@ -185,6 +185,10 @@ public class Vehiculo {
         this.traccion = traccion;
     } 
     @Override
+    public String toString(){
+        return this.id+"|"+this.placa+"|"+this.marca+"|"+this.modelo+"|"+this.tipoMotor+"|"+this.año+"|"+this.recorrido+"|"+this.tipoCombustible+"|"+this.precio+"|"+this.vidrios+"|"+this.transmision+"|"+this.traccion;
+    }
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -350,5 +354,55 @@ public class Vehiculo {
          }else
              System.out.println("Correo o Contraseña Incorrecta");
          return null;
-     }   
+     } 
+     public static ArrayList<Vehiculo> busquedaPorVehiculo(String nomfileVehi){
+        ArrayList<Vehiculo> v1=Vehiculo.readFile(nomfileVehi);
+        ArrayList<Vehiculo> ofer=new ArrayList<>();
+        Scanner sc=new Scanner(System.in);
+        int cont=0;
+        do{
+            System.out.println("Digite tipo,recorrido,año y precio(ingresar en el orden indicado, no es necesario ingresar todos los elementos si usa mas de uno separe con comas \"(,)\"): ");
+            String opciones=sc.nextLine().toLowerCase();
+            if(opciones.contains(",")){
+                String o[]=opciones.split(",");
+                for(Vehiculo v:v1){
+                    if(o.length==2){
+                        if(o[0].equals("moto")||o[0].equals("camioneta")||o[0].equals("auto") && o[1].equals(v.getRecorrido())){
+                            ofer.add(v);
+                            cont=cont+1;
+                        }
+                    }if(o.length==3){
+                        if(o[0].equals("moto")||o[0].equals("camioneta")||o[0].equals("auto") && o[1].equals(v.getRecorrido())&& o[2].equals(v.getAño())){
+                            ofer.add(v);
+                            cont=cont+1;
+                        }
+                        
+                    }if(o.length==4){
+                        if(o[0].equals("moto")||o[0].equals("camioneta")||o[0].equals("auto") && o[1].equals(v.getRecorrido())&& o[2].equals(v.getAño())&&o[3].equals(v.getPrecio())){
+                            ofer.add(v);
+                            cont=cont+1;
+                        }
+                    }
+                }
+            }else if(opciones.equals("moto")||opciones.equals("camioneta")||opciones.equals("auto") ){
+                for(Vehiculo v:v1){
+                    if(v.getVidrios().equals("null")&&opciones.equals("moto")){
+                        ofer.add(v);
+                        cont=cont+1;
+                    }
+                    if(v.getTraccion().equals("null")&&opciones.equals("auto")){
+                        ofer.add(v);
+                        cont=cont+1;
+                    }
+                    if(!v.getTraccion().equals("null")&&opciones.equals("camioneta")){
+                        ofer.add(v);
+                        cont=cont+1;
+                    }
+                    }
+            }else{
+                System.out.println("VALOR INVALIDO");
+            }
+        }while(cont!=v1.size());
+        return ofer;        
+    }
 }
