@@ -42,10 +42,10 @@ public class Comprador extends Personas {
         return compradores;
     }
     
-    public static Comprador searchByCorreo(ArrayList<Comprador> compradores,String correo){
+    public static String searchByCorreo(ArrayList<Comprador> compradores,String correo){
         for(Comprador c : compradores){
             if(c.correoElectronico.equals(correo));
-            return c;
+            return c.correoElectronico;
         }
         return null;
     }
@@ -63,7 +63,7 @@ public class Comprador extends Personas {
          String correo = sc.next();
          System.out.println("Ingrese su clave: ");
          String clave = sc.next();
-         if (correo.equals(Comprador.searchByCorreo(compradores, correo).correoElectronico)){
+         if (correo.equals(Comprador.searchByCorreo(compradores, correo))){
              return null;
          }
          else{

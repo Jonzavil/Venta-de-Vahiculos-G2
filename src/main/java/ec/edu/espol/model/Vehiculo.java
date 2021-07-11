@@ -236,27 +236,30 @@ public class Vehiculo {
     
     
     
-    public static Vehiculo searchByPlaca(ArrayList<Vehiculo> vehiculos,String placa){
+    public static String searchByPlaca(ArrayList<Vehiculo> vehiculos,String placa){
         for(Vehiculo v : vehiculos){
             if(v.placa.equals(placa));
-            return v;
+            return v.placa;
         }
         return null;
     }
     
     
-     public static Vehiculo registroVendedor(Scanner sc, String nomfile,String nomfilevendedor){
+     public static Vehiculo registroVehiculo(Scanner sc, String nomfile,String nomfilevendedor){
          ArrayList<Vehiculo> vehiculos = Vehiculo.readFile(nomfile);
          Vehiculo v1;
+         String moto="moto";
          int id = Util.nextID(nomfile);
          System.out.println("Ingrese el correo electrónico");
          String correo = sc.next();
          System.out.println("Ingrese su clave: ");
          String clave = sc.next();
-         System.out.println("Ingrese el tipo, si es auto ingrese auto, si es camioneta ingrese camioneta, si es moto ingrese moto: ");
-         String tipo = sc.next();
+         //System.out.println("Ingrese el tipo, si es auto ingrese auto, si es camioneta ingrese camioneta, si es moto ingrese moto: ");
+         //String tipo = sc.next();
          if(Vendedor.compararCorreoYContraseña(nomfilevendedor, correo, clave)){
-             if(tipo.equals("moto")){
+             System.out.println("Ingrese el tipo, si es auto ingrese auto, si es camioneta ingrese camioneta, si es moto ingrese moto: ");
+             String tipo = sc.next();
+             if(tipo.equals(moto)){
                  System.out.println("Ingrese la placa: ");
                  String placa = sc.next();
                  System.out.println("Ingrese la marca: ");
@@ -275,10 +278,13 @@ public class Vehiculo {
                  String combustible = sc.next();
                  System.out.println("Ingrese el precio: ");
                  double precio = sc.nextDouble();
-                 v1 = new Vehiculo(id,placa,marca,modelo,tipomotor,año,recorrido,color,combustible,precio);
-                 return v1;
+                 if(!placa.equals(Vehiculo.searchByPlaca(vehiculos, placa))){
+                    v1 = new Vehiculo(id,placa,marca,modelo,tipomotor,año,recorrido,color,combustible,precio);
+                    return v1;
+                 }else
+                     return null;
              }
-             if(tipo.equals("camioneta")){
+             else if(tipo.equals("camioneta")){
                  System.out.println("Ingrese la placa: ");
                  String placa = sc.next();
                  System.out.println("Ingrese la marca: ");
@@ -303,10 +309,13 @@ public class Vehiculo {
                  String traccion = sc.next();
                  System.out.println("Ingrese el precio: ");
                  double precio = sc.nextDouble();
-                 v1 = new Vehiculo(id,placa,marca,modelo,tipomotor,año,recorrido,color,combustible,precio,vidrios,transmision,traccion);
-                 return v1;
+                 if(!placa.equals(Vehiculo.searchByPlaca(vehiculos, placa))){
+                    v1 = new Vehiculo(id,placa,marca,modelo,tipomotor,año,recorrido,color,combustible,precio,vidrios,transmision,traccion);
+                    return v1;
+                 }else
+                     return null;
          }
-             if(tipo.equals("auto")){
+             else if(tipo.equals("auto")){
                  System.out.println("Ingrese la placa: ");
                  String placa = sc.next();
                  System.out.println("Ingrese la marca: ");
@@ -329,8 +338,11 @@ public class Vehiculo {
                  String transmision = sc.next();
                  System.out.println("Ingrese el precio: ");
                  double precio = sc.nextDouble();
-                 v1 = new Vehiculo(id,placa,marca,modelo,tipomotor,año,recorrido,color,combustible,precio,vidrios,transmision);
-                 return v1;
+                 if(!placa.equals(Vehiculo.searchByPlaca(vehiculos, placa))){
+                    v1 = new Vehiculo(id,placa,marca,modelo,tipomotor,año,recorrido,color,combustible,precio,vidrios,transmision);
+                    return v1;
+                 }else
+                     return null;
              }
          
          }

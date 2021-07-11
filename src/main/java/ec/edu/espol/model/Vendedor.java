@@ -40,10 +40,10 @@ public class Vendedor extends Personas {
         return vendedores;
     }
     
-    public static Vendedor searchByCorreo(ArrayList<Vendedor> vendedores,String correo){
+    public static String searchByCorreo(ArrayList<Vendedor> vendedores,String correo){
         for(Vendedor v : vendedores){
             if(v.correoElectronico.equals(correo));
-            return v;
+            return v.correoElectronico;
         }
         return null;
     }
@@ -61,7 +61,7 @@ public class Vendedor extends Personas {
          String correo = sc.next();
          System.out.println("Ingrese su clave: ");
          String clave = sc.next();
-         if (correo.equals(Vendedor.searchByCorreo(vendedores, correo).correoElectronico)){
+         if (correo.equals(Vendedor.searchByCorreo(vendedores, correo))){
              return null;
          }
          else{
@@ -81,10 +81,12 @@ public class Vendedor extends Personas {
         catch (NoSuchAlgorithmException e) { 
             System.out.println("Exception thrown for incorrect algorithm: " + e); 
         }
+        System.out.println(contraseña);
         for(Vendedor v : vendedores){
             if(v.correoElectronico.equals(correo)&&(v.clave.equals(contraseña))){
                 return true;
             }
+            System.out.println(v.correoElectronico+v.clave);
         }
         return false;
     }
