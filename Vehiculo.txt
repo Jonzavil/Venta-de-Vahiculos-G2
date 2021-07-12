@@ -1,1 +1,1 @@
-1|GSD5620|Tundra|MWQ40|Pistones|2010|10000.0|gasolina|12000.0|null|null|null
+1|GSD|chev|dimx|1|2010|75000.0|azul|diesel|17000.0|manual|delantera|trasera

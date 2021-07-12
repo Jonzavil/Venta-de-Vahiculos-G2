@@ -71,7 +71,7 @@ public class Oferta {
                 String linea = sc.nextLine();
                 String[] tokens = linea.split("\\|");
                 Oferta o;
-                o = new Oferta(Integer.parseInt(tokens[1]),tokens[0],tokens[2]);
+                o = new Oferta(Double.parseDouble(tokens[1]),tokens[0],tokens[2]);
                 ofertas.add(o);
             }
         }
@@ -83,9 +83,9 @@ public class Oferta {
     public static ArrayList<Oferta> ofertarPorVehiculo(String nomfile,String nomfileVehiculo,String nomfileComprador){
         Scanner sc=new Scanner(System.in);
         System.out.println("Ingrese Correo Electronico: ");
-        String correo=sc.nextLine();
+        String correo=sc.next();
         System.out.println("Ingrese Contraseña: ");
-        String clave=sc.nextLine();
+        String clave=sc.next();
         ArrayList<Oferta> cP=new ArrayList<>();
         Oferta ofer;
         ArrayList<Vehiculo>vn;
@@ -102,7 +102,7 @@ public class Oferta {
             do{
                 System.out.println("Seleccione opcion: ");
                 if(cont==0){
-                    System.out.println("Vehiculo: "+aV[cont].toString());
+                    System.out.println("Vehiculo: "+(aV[cont].toString()));
                     System.out.println("1.Siguiente");
                     System.out.println("2.Ofertar");
                     System.out.println("3.Salir");
@@ -122,7 +122,7 @@ public class Oferta {
                         cont=-1;
                     }
                 }if(0<cont || cont<=aV.length){
-                    System.out.println("Vehiculo: "+aV[cont].toString());
+                    System.out.println("Vehiculo: "+(aV[cont].toString()));
                     System.out.println("1.Siguiente");
                     System.out.println("2.Ofertar");
                     System.out.println("3.Atras");

@@ -186,7 +186,7 @@ public class Vehiculo {
     } 
     @Override
     public String toString(){
-        return this.id+"|"+this.placa+"|"+this.marca+"|"+this.modelo+"|"+this.tipoMotor+"|"+this.año+"|"+this.recorrido+"|"+this.tipoCombustible+"|"+this.precio+"|"+this.vidrios+"|"+this.transmision+"|"+this.traccion;
+        return this.id+"|"+this.placa+"|"+this.marca+"|"+this.modelo+"|"+this.tipoMotor+"|"+this.año+"|"+this.recorrido+"|"+this.color+"|"+this.tipoCombustible+"|"+this.precio+"|"+this.vidrios+"|"+this.transmision+"|"+this.traccion;
     }
     @Override
     public boolean equals(Object obj) {
@@ -211,7 +211,7 @@ public class Vehiculo {
     public void saveFile(String nomfile){
          try(PrintWriter pw = new PrintWriter(new FileOutputStream(new File(nomfile),true)))
         {
-            pw.println(this.id+"|"+this.placa+"|"+this.marca+"|"+this.modelo+"|"+this.tipoMotor+"|"+this.año+"|"+this.recorrido+"|"+this.tipoCombustible+"|"+this.precio+"|"+this.vidrios+"|"+this.transmision+"|"+this.traccion);
+            pw.println(this.id+"|"+this.placa+"|"+this.marca+"|"+this.modelo+"|"+this.tipoMotor+"|"+this.año+"|"+this.recorrido+"|"+this.color+"|"+this.tipoCombustible+"|"+this.precio+"|"+this.vidrios+"|"+this.transmision+"|"+this.traccion);
         }
         catch(Exception e){
             System.out.println(e.getMessage());
@@ -222,7 +222,7 @@ public class Vehiculo {
         try(Scanner sc = new Scanner(new File(nomFile))){
             while(sc.hasNextLine())
             {
-                String linea = sc.nextLine();
+                String linea = sc.next();
                 String[] tokens = linea.split("\\|");
                 Vehiculo v;
                 v = new Vehiculo(Integer.parseInt(tokens[0]),tokens[1],tokens[2],tokens[3],tokens[4],Integer.parseInt(tokens[5]),Double.parseDouble(tokens[6]),tokens[7],tokens[8],Double.parseDouble(tokens[9]),tokens[10],tokens[11],tokens[12]);
@@ -356,13 +356,14 @@ public class Vehiculo {
          return null;
      } 
      public static ArrayList<Vehiculo> busquedaPorVehiculo(String nomfileVehi){
-        ArrayList<Vehiculo> v1=Vehiculo.readFile(nomfileVehi);
+        ArrayList<Vehiculo> v1=new ArrayList<>();
+                v1=Vehiculo.readFile(nomfileVehi);
         ArrayList<Vehiculo> ofer=new ArrayList<>();
         Scanner sc=new Scanner(System.in);
         int cont=0;
         do{
             System.out.println("Digite tipo,recorrido,año y precio(ingresar en el orden indicado, no es necesario ingresar todos los elementos si usa mas de uno separe con comas \"(,)\"): ");
-            String opciones=sc.nextLine().toLowerCase();
+            String opciones=sc.next().toLowerCase();
             if(opciones.contains(",")){
                 String o[]=opciones.split(",");
                 for(Vehiculo v:v1){

@@ -9,7 +9,6 @@ import ec.edu.espol.util.Util;
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.Properties;
 import java.util.Scanner;
 
 /**
