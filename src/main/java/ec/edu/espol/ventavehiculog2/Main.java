@@ -55,6 +55,7 @@ public class Main {
                             System.out.println("---------------------------------------------");
                             break;
                         case 3:
+                            Oferta.aceptarOferta("Oferta.txt", "Vendedor.txt", "Comprador.txt");
                             System.out.println("---------------------------------------------");
                             break;
                         case 4:
@@ -81,7 +82,7 @@ public class Main {
                             System.out.println("---------------------------------------------");
                             break;
                         case 2:
-                            Oferta.ofertarPorVehiculo("Vehiculo.txt", "Comprador.txt");
+                            Oferta.ofertarPorVehiculo("Oferta.txt","Vehiculo.txt", "Comprador.txt");
                             System.out.println("---------------------------------------------");
                             break;
                         case 3:
