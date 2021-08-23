@@ -6,6 +6,7 @@
 package ec.edu.espol.model;
 
 import ec.edu.espol.util.EnviarConGmail;
+import ec.edu.espol.util.JavaMailUtil;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
@@ -192,6 +193,8 @@ public class Oferta {
                     }
                     if(opcion==2){
                         System.out.println("Oferta ");
+                        JavaMailUtil.sendMail("comprador@example.com","Se ha aceptado su oferta");
+                        /*
                         final String fromEmail = correo; //requires valid gmail id
                         final String password = clave; // correct password for gmail id
                         final String toEmail = aV[cont].correo; // can be any email id 
@@ -214,6 +217,8 @@ public class Oferta {
                         Session session = Session.getInstance(props, auth);
 
                         EnviarConGmail.sendEmail(session, toEmail,"Venta Auto", "Se acepto su oferta");
+*/
+                        
                             }
                     if(opcion==3){
                         cont=-1;
@@ -230,6 +235,8 @@ public class Oferta {
                     }
                     if(opcion==2){
                         System.out.println("oferta ");
+                        JavaMailUtil.sendMail("comprador@example.com","Se ha aceptado su oferta");
+                        /*
                         final String fromEmail = correo; //requires valid gmail id
                         final String password = clave; // correct password for gmail id
                         final String toEmail = aV[cont].correo; // can be any email id 
@@ -252,6 +259,7 @@ public class Oferta {
                         Session session = Session.getInstance(props, auth);
 
                         EnviarConGmail.sendEmail(session, toEmail,"Venta Auto", "Se acepto su oferta");
+*/
                     }
                     if(opcion==3){
                         cont=cont-1;
