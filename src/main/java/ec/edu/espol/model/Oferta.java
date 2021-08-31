@@ -193,7 +193,7 @@ public class Oferta {
                     }
                     if(opcion==2){
                         System.out.println("Oferta ");
-                        JavaMailUtil.sendMail("comprador@example.com","Se ha aceptado su oferta");
+                        JavaMailUtil.sendMail("zavala.avila.jonathan.samuel@gmail.com","Se ha aceptado su oferta");
                         /*
                         final String fromEmail = correo; //requires valid gmail id
                         final String password = clave; // correct password for gmail id

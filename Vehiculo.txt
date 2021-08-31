@@ -1,1 +1,1 @@
-1|GSD|chev|dimx|1|2010|75000.0|azul|diesel|17000.0|manual|delantera|trasera
+1|GSD|chev|dimx|cilindro|2010|75000.0|azul|diesel|17000.0|manual|delantera|trasera

@@ -223,6 +223,7 @@ public class Vehiculo {
             while(sc.hasNextLine())
             {
                 String linea = sc.next();
+                System.out.println(linea);
                 String[] tokens = linea.split("\\|");
                 Vehiculo v;
                 v = new Vehiculo(Integer.parseInt(tokens[0]),tokens[1],tokens[2],tokens[3],tokens[4],Integer.parseInt(tokens[5]),Double.parseDouble(tokens[6]),tokens[7],tokens[8],Double.parseDouble(tokens[9]),tokens[10],tokens[11],tokens[12]);
